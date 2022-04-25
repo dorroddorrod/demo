@@ -1,4 +1,5 @@
 argocd:
+  fullnameOverride: argocd
   redis-ha:
     enabled: true
 
