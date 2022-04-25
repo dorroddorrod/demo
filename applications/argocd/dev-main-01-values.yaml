@@ -15,3 +15,6 @@ argocd:
     autoscaling:
       enabled: true
       minReplicas: 2
+
+  applicationSet:
+    enabled: false
