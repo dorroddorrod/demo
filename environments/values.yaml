@@ -52,6 +52,7 @@ projects:
     description: 'infrastructure project'
     sourceRepos:
     - https://github.com/dorroddorrod/demo.git
+    - https://argoproj.github.io/argo-helm
 
 applications:
   argocd:
