@@ -1,0 +1,69 @@
+# your override should supply an envName
+envName: null
+
+# if set, override all Applications to use this project
+projectOverride: null
+
+default:
+  project:
+    roles: |
+      - name: read-only
+        description: Read-only privileges within project
+        policies:
+        - p, proj:{{ $.curProjName }}:read-only, applications, get, {{ $.curProjName }}/*, allow
+      - name: ci-role
+        description: Role to allow CICD pipeline to sync apps within project
+        policies:
+        - p, proj:{{ $.curProjName }}:ci-role, applications, sync, {{ $.curProjName }}/*, allow
+    destinations: |
+      - namespace: {{ $.Values.default.app.destination.namespace | required "Missing proj dest namespace"}}
+        server: {{ $.Values.default.app.destination.server | required "Missing proj dest server" }}
+  app:
+    enableAutoSync: true
+    autoSyncPrune: true
+    destination:
+      namespace: null
+      server: null
+    project: null
+    source:
+      path: null
+      repoURL: https://github.com/dorroddorrod/demo.git
+      targetRevision: HEAD
+
+      #Examples of how you might use extraSourceFields. depending on if you're using Helm or Kustomize for your apps
+      #
+      #extraSourceFields: |
+      #  helm:
+      #    valueFiles:
+      #    - {{ $.Values.envName }}-values.yaml
+      #  kustomize:
+      #    namePrefix: prod-
+    #extraFields: |
+    #  #Default fields you want on all applications, unless the app individually overrides.
+    #  # for example, here's how to ignore replicas if your chart uses HPA
+    #  ignoreDifferences:
+    #  - group: apps
+    #    kind: Deployment
+    #    jsonPointers:
+    #    - /spec/replicas
+
+projects:
+  infra:
+    description: 'infrastructure project'
+    sourceRepos:
+    - https://github.com/dorroddorrod/demo.git
+
+applications:
+  argocd:
+    enabled: false
+    destination:
+      namespace: null
+      server: null
+    project: infra
+    source:
+      path: applications/argocd
+      repoURL: https://github.com/dorroddorrod/demo.git
+      extraSourceFields: |
+        helm:
+          valueFiles:
+          - {{ $.Values.envName }}-values.yaml

@@ -1,0 +1,16 @@
+argocd:
+  redis-ha:
+    enabled: true
+
+  controller:
+    enableStatefulSet: true
+
+  server:
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+
+  repoServer:
+    autoscaling:
+      enabled: true
+      minReplicas: 2
