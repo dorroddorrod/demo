@@ -50,6 +50,10 @@ default:
 projects:
   infra:
     description: 'infrastructure project'
+    extraFields: |
+      clusterResourceWhitelist:
+        - group: '*'
+          kind: '*'
     sourceRepos:
     - https://github.com/dorroddorrod/demo.git
 
