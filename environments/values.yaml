@@ -30,22 +30,6 @@ default:
       repoURL: https://github.com/dorroddorrod/demo.git
       targetRevision: HEAD
 
-      #Examples of how you might use extraSourceFields. depending on if you're using Helm or Kustomize for your apps
-      #
-      #extraSourceFields: |
-      #  helm:
-      #    valueFiles:
-      #    - {{ $.Values.envName }}-values.yaml
-      #  kustomize:
-      #    namePrefix: prod-
-    #extraFields: |
-    #  #Default fields you want on all applications, unless the app individually overrides.
-    #  # for example, here's how to ignore replicas if your chart uses HPA
-    #  ignoreDifferences:
-    #  - group: apps
-    #    kind: Deployment
-    #    jsonPointers:
-    #    - /spec/replicas
 
 projects:
   infra:
