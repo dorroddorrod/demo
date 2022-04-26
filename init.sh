@@ -10,6 +10,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: argocd
+  namespace: $argoNamespace
 spec:
   description: project for management of Argo CD itself
   clusterResourceWhitelist:
@@ -25,6 +26,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
+  namespace: $argoNamespace
 spec:
   destination:
     namespace: argo-cd
@@ -40,6 +42,7 @@ spec:
     helm:
       valueFiles:
       - $envName.yaml
+---
 EOF
 sleep 60
 kubectl -n $argoNamespace get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
