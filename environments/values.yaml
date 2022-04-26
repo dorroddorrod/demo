@@ -19,6 +19,9 @@ default:
       - namespace: {{ $.Values.default.app.destination.namespace | required "Missing proj dest namespace"}}
         server: {{ $.Values.default.app.destination.server | required "Missing proj dest server" }}
   app:
+    argo:
+      destination:
+        namespace: argo
     enableAutoSync: true
     autoSyncPrune: true
     destination:
