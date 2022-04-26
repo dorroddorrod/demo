@@ -9,3 +9,6 @@ applications:
 
   grafana:
     enabled: true
+
+  fluent-bit:
+    enabled: true

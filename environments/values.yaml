@@ -78,3 +78,19 @@ applications:
       server: null
     source:
       path: applications/grafana/{{ $.Values.envName }}
+
+  fluent-bit:
+    enabled: false
+    destination:
+      namespace: monitoring
+      server: null
+    source:
+      path: applications/fluent-bit/{{ $.Values.envName }}
+
+  loki:
+    enabled: false
+    destination:
+      namespace: monitoring
+      server: null
+    source:
+      path: applications/loki/{{ $.Values.envName }}

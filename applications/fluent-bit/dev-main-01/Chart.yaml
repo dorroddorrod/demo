@@ -1,0 +1,8 @@
+apiVersion: v2
+description: Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
+name: fluent-bit
+version: 0.19.24
+dependencies:
+- name: fluent-bit
+  version: 0.19.24
+  repository: https://fluent.github.io/helm-charts
