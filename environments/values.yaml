@@ -26,12 +26,17 @@ default:
     autoSyncPrune: true
     destination:
       namespace: null
-      server: null
-    project: null
+      server: https://kubernetes.default.svc
+    project: infra
     source:
       path: null
       repoURL: https://github.com/dorroddorrod/demo.git
       targetRevision: HEAD
+      extraSourceFields: |
+        helm:
+          valueFiles:
+          - ../values.yaml
+          - values.yaml
 
 
 projects:
@@ -53,12 +58,5 @@ applications:
     destination:
       namespace: argo-cd
       server: null
-    project: infra
     source:
       path: applications/argo-cd/{{ $.Values.envName }}
-      repoURL: https://github.com/dorroddorrod/demo.git
-      extraSourceFields: |
-        helm:
-          valueFiles:
-          - ../values.yaml
-          - values.yaml

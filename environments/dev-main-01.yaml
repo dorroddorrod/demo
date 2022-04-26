@@ -1,15 +1,5 @@
 envName: dev-main-01
 
-default:
-  app:
-    destination:
-      namespace: default
-      server: https://kubernetes.default.svc
-    project: infra
-    source:
-      targetRevision: HEAD
-
-
 applications:
   argocd:
     enabled: true
