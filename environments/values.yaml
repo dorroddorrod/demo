@@ -7,7 +7,7 @@ projectOverride: null
 default:
   argo:
     destination:
-      namespace: argo-cd
+      namespace: argocd
   project:
     roles: |
       - name: read-only
@@ -56,7 +56,7 @@ applications:
   argocd:
     enabled: false
     destination:
-      namespace: argo-cd
+      namespace: argocd
       server: null
     source:
-      path: applications/argo-cd/{{ $.Values.envName }}
+      path: applications/argocd/{{ $.Values.envName }}

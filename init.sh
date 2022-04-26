@@ -1,9 +1,9 @@
 #!/bin/bash
 export envName=dev-main-01
-export argoNamespace=argo-cd
-cd applications/argo-cd/$envName
+export argoNamespace=argocd
+cd applications/argocd/$envName
 helm dep up
-helm upgrade --install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
+helm upgrade --install argocd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
 cd ../../../
 cat <<EOF | kubectl apply -f -
 apiVersion: argoproj.io/v1alpha1
@@ -17,7 +17,7 @@ spec:
   - group: '*'
     kind: '*'
   destinations:
-  - namespace: argo-cd
+  - namespace: argocd
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/dorroddorrod/demo.git
@@ -29,7 +29,7 @@ metadata:
   namespace: $argoNamespace
 spec:
   destination:
-    namespace: argo-cd
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: argocd
   syncPolicy:

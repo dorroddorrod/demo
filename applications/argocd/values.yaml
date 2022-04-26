@@ -1,4 +1,4 @@
 argo-cd:
-  fullnameOverride: "argo-cd"
+  fullnameOverride: "argocd"
   applicationSet:
     enabled: false
