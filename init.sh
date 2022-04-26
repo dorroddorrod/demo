@@ -3,7 +3,7 @@ export envName=dev-main-01
 export argoNamespace=argo-cd
 cd applications/argo-cd/$envName
 helm dep up
-helm install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
+helm upgrade --install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
 cd ../../../
 cat <<EOF | kubectl apply -f -
 apiVersion: argoproj.io/v1alpha1
@@ -46,4 +46,4 @@ spec:
 EOF
 sleep 60
 kubectl -n $argoNamespace get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-kubectl port-forward service/argo-cd-argocd-server -n $argoNamespace 8080:443
+kubectl port-forward service/argocd-server -n $argoNamespace 8080:443
