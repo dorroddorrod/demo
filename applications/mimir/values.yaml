@@ -20,3 +20,5 @@ mimir:
     replicas: 1
   gateway:
     replicas: 1
+  admin_api:
+    replicas: 1
