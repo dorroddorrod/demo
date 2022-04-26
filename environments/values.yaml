@@ -37,7 +37,7 @@ default:
 projects:
   infra:
     description: 'infrastructure project'
-    destinations:
+    destinations: |
       - namespace: '*'
         server: '*'
     extraFields: |
