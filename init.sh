@@ -3,7 +3,7 @@ export envName=dev-main-01
 export argoNamespace=argo
 cd applications/argocd/$envName
 helm dep up
-helm install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace
+helm install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
 cd ../../../
 kubectl apply -f environments/templates/argocd-project.yaml
 kubectl apply -f environments/templates/app-of-apps.yaml
