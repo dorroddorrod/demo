@@ -65,9 +65,10 @@ applications:
       server: null
     project: infra
     source:
-      path: applications/argocd/{{ $.Values.envName }}
+      path: applications/argocd
       repoURL: https://github.com/dorroddorrod/demo.git
       extraSourceFields: |
         helm:
           valueFiles:
-          - {{ $.Values.envName }}-values.yaml
+          - values.yaml
+          - {{ $.Values.envName }}/values.yaml
