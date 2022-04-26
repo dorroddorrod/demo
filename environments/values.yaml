@@ -24,6 +24,7 @@ default:
   app:
     enableAutoSync: true
     autoSyncPrune: true
+    autoCreateNamespace: true
     destination:
       namespace: null
       server: https://kubernetes.default.svc
