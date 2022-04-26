@@ -14,5 +14,4 @@ fluent-bit:
           Match kube.*
           Host loki
           Labels job=fluentbit
-          Label_keys $sub['stream']
           Auto_kubernetes_labels on
