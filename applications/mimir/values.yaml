@@ -1,0 +1,22 @@
+mimir:
+  alertmanager:
+    persistentVolume:
+      enabled: false
+    statefulSet:
+      enabled: false
+  distributor:
+    replicas: 1
+  ingester:
+    replicas: 1
+  memcached:
+    enabled: false
+  memcached-queries:
+    enabled: false
+  memcached-metadata:
+    enabled: false
+  querier:
+    replicas: 1
+  ruler:
+    replicas: 1
+  gateway:
+    replicas: 1
