@@ -4,5 +4,5 @@ applications:
   argocd:
     enabled: true
 
-  promethus:
+  prometheus:
     enabled: true
