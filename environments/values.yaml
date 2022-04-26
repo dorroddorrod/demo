@@ -5,6 +5,9 @@ envName: null
 projectOverride: null
 
 default:
+  argo:
+    destination:
+      namespace: argo-cd
   project:
     roles: |
       - name: read-only
@@ -19,9 +22,6 @@ default:
       - namespace: {{ $.Values.default.app.destination.namespace | required "Missing proj dest namespace"}}
         server: {{ $.Values.default.app.destination.server | required "Missing proj dest server" }}
   app:
-    argo:
-      destination:
-        namespace: argo-cd
     enableAutoSync: true
     autoSyncPrune: true
     destination:
