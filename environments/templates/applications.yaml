@@ -26,6 +26,7 @@ spec:
       prune: {{ $val.autoSyncPrune | default $.Values.default.app.autoSyncPrune | default true }}
     syncOptions:
       - CreateNamespace={{ $val.autoCreateNamespace | default $.Values.default.app.autoCreateNamespace | default true }}
+      - Replace={{ $val.autoReplace | default $.Values.default.app.autoReplace | default false }}
 {{- end }}
   source:
     path: {{ tpl $val.source.path $ }}

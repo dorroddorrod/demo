@@ -64,6 +64,7 @@ applications:
 
   prometheus:
     enabled: false
+    autoReplace: true
     destination:
       namespace: monitoring
       server: null
