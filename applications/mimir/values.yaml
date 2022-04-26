@@ -1,9 +1,6 @@
 mimir-distributed:
   alertmanager:
-    persistentVolume:
-      enabled: false
-    statefulSet:
-      enabled: false
+    enabled: false
   distributor:
     replicas: 2
   ingester:
@@ -19,6 +16,10 @@ mimir-distributed:
   ruler:
     replicas: 1
   gateway:
-    replicas: 1
+    enabled: false
   admin_api:
-    replicas: 1
+    enabled: false
+  minio:
+    enabled: false
+  nginx:
+    enabled: false
