@@ -5,4 +5,4 @@ applications:
     enabled: true
 
   prometheus:
-    enabled: true
+    enabled: false
