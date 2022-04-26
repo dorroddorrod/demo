@@ -37,6 +37,9 @@ default:
 projects:
   infra:
     description: 'infrastructure project'
+    destinations:
+      - namespace: '*'
+        server: '*'
     extraFields: |
       clusterResourceWhitelist:
         - group: '*'
