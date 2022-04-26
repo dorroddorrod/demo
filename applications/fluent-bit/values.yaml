@@ -12,4 +12,4 @@ fluent-bit:
       [OUTPUT]
           Name loki
           Match kube.*
-          Host loki-service
+          Host loki-loki-distributed-ingester
