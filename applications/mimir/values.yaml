@@ -2,9 +2,9 @@ mimir-distributed:
   alertmanager:
     enabled: false
   distributor:
-    replicas: 2
-  ingester:
     replicas: 1
+  ingester:
+    replicas: 2
   memcached:
     enabled: false
   memcached-queries:
