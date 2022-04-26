@@ -5,7 +5,7 @@ mimir-distributed:
     statefulSet:
       enabled: false
   distributor:
-    replicas: 1
+    replicas: 2
   ingester:
     replicas: 1
   memcached:
