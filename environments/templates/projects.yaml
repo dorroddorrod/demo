@@ -10,7 +10,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: {{ $key }}
-  namespace: {{ $val.argo.namespace | default $.Values.default.argo.destination.namespace | required (printf "No destination.namespace specified for %s" $key ) }}
+  namespace: {{ $.Values.default.argo.destination.namespace | required (printf "No destination.namespace specified for %s" $key ) }}
 spec:
 {{- if $val.extraFields }}
 {{ tpl $val.extraFields $ | indent 2 }}
