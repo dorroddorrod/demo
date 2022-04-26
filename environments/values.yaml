@@ -65,7 +65,7 @@ applications:
       server: null
     project: infra
     source:
-      path: applications/argocd
+      path: applications/argocd/{{ $.Values.envName }}
       repoURL: https://github.com/dorroddorrod/demo.git
       extraSourceFields: |
         helm:
