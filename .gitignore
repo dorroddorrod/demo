@@ -1,0 +1,6 @@
+**/charts/*.tgz
+**/Chart.lock
+
+.vscode
+
+.history
