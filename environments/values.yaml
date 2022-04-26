@@ -56,7 +56,6 @@ applications:
       repoURL: https://github.com/dorroddorrod/demo.git
       extraSourceFields: |
         helm:
-          releaseName: argo-cd
           valueFiles:
           - values.yaml
           - {{ $.Values.envName }}/values.yaml

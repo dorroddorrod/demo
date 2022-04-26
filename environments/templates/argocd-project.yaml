@@ -8,7 +8,7 @@ spec:
   - group: '*'
     kind: '*'
   destinations:
-  - namespace: default
+  - namespace: argo-cd
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/dorroddorrod/demo.git
