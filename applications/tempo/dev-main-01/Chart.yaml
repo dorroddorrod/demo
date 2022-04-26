@@ -1,0 +1,8 @@
+apiVersion: v2
+description: Grafana Tempo Single Binary Mode
+name: tempo
+version: 0.14.2
+dependencies:
+- name: tempo
+  version: 0.14.2
+  repository: https://grafana.github.io/helm-charts

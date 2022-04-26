@@ -94,3 +94,19 @@ applications:
       server: null
     source:
       path: applications/loki/{{ $.Values.envName }}
+
+  mimir:
+    enabled: false
+    destination:
+      namespace: monitoring
+      server: null
+    source:
+      path: applications/mimir/{{ $.Values.envName }}
+
+  tempo:
+    enabled: false
+    destination:
+      namespace: monitoring
+      server: null
+    source:
+      path: applications/tempo/{{ $.Values.envName }}
