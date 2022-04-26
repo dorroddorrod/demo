@@ -1,6 +1,6 @@
 kube-prometheus-stack:
   alertmanager:
-    enabled: false
+    enabled: true
   grafana:
     enabled: false
   prometheus:
