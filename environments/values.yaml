@@ -61,3 +61,11 @@ applications:
       server: null
     source:
       path: applications/argocd/{{ $.Values.envName }}
+
+  prometheus:
+    enabled: false
+    destination:
+      namespace: monitoring
+      server: null
+    source:
+      path: applications/prometheus/{{ $.Values.envName }}

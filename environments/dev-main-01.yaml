@@ -3,3 +3,6 @@ envName: dev-main-01
 applications:
   argocd:
     enabled: true
+
+  promethus:
+    enabled: true
