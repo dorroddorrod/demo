@@ -1,8 +1,8 @@
 apiVersion: v2
-name: loki-distributed
-description: Helm chart for Grafana Loki in microservices mode
-version: 0.48.3
+name: loki
+description: "Loki: like Prometheus, but for logs."
+version: 2.11.1
 dependencies:
-- name: loki-distributed
-  version: 0.48.3
+- name: loki
+  version: 2.11.1
   repository: https://grafana.github.io/helm-charts
