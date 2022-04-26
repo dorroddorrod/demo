@@ -4,7 +4,7 @@ metadata:
   name: app-of-apps
 spec:
   destination:
-    namespace: default
+    namespace: argo-cd
     server: https://kubernetes.default.svc
   project: argocd
   syncPolicy:
