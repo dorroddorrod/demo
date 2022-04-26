@@ -5,8 +5,8 @@ cd applications/argocd/$envName
 helm dep up
 helm install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
 cd ../../../
-kubectl apply -f environments/templates/argocd-project.yaml
-kubectl apply -f environments/templates/app-of-apps.yaml
+kubectl -n $argoNamespace apply -f environments/templates/argocd-project.yaml
+kubectl -n $argoNamespace apply -f environments/templates/app-of-apps.yaml
 sleep 60
 kubectl -n $argoNamespace get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-kubectl port-forward service/argocd-server -n $argoNamespace 8080:443
+kubectl port-forward service/argo-cd-argocd-server -n $argoNamespace 8080:443
