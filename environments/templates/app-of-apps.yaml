@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: argocd
+  syncPolicy:
+    automated:
+      prune: true
+  source:
+    path: environments
+    repoURL: https://github.com/dorroddorrod/demo.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - dev-main-01.yaml
