@@ -61,7 +61,7 @@ applications:
   argocd:
     enabled: false
     destination:
-      namespace: null
+      namespace: argo
       server: null
     project: infra
     source:
