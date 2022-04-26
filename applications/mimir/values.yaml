@@ -20,6 +20,6 @@ mimir-distributed:
   admin_api:
     enabled: false
   minio:
-    enabled: false
+    enabled: true
   nginx:
-    enabled: false
+    enabled: true
