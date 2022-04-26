@@ -22,4 +22,4 @@ mimir-distributed:
   minio:
     enabled: false
   nginx:
-    enabled: false
+    enabled: true
