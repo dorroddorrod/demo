@@ -16,7 +16,7 @@ mimir-distributed:
   ruler:
     replicas: 1
   gateway:
-    enabled: true
+    enabled: false
   admin_api:
     enabled: false
   minio:
