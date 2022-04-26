@@ -12,3 +12,6 @@ applications:
 
   fluent-bit:
     enabled: true
+
+  loki:
+    enabled: true
