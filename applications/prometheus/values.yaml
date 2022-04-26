@@ -1,7 +1,4 @@
 kube-prometheus-stack:
-  global:
-    rbac:
-      create: false
   grafana:
     enabled: false
   prometheus:
