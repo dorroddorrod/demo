@@ -18,7 +18,7 @@ spec:
 {{- if $.Values.projectOverride }}
   project: {{ $.Values.projectOverride }}
 {{- else }}
-  project: {{ $.Values.envName }}-{{ $val.project | default $.Values.default.app.project | required (printf "No project specified for %s" $key ) }}
+  project: {{ $val.project | default $.Values.default.app.project | required (printf "No project specified for %s" $key ) }}
 {{- end }}
 {{- if $val.enableAutoSync | default $.Values.default.app.enableAutoSync }}
   syncPolicy:
