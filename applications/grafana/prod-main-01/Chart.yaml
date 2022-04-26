@@ -1,0 +1,8 @@
+apiVersion: v2
+description: The leading tool for querying and visualizing time series and metrics.
+name: grafana
+version: 6.26.7
+dependencies:
+- name: grafana
+  version: 6.26.7
+  repository: https://grafana.github.io/helm-charts

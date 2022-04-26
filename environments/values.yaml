@@ -70,3 +70,12 @@ applications:
       server: null
     source:
       path: applications/prometheus/{{ $.Values.envName }}
+
+  grafana:
+    enabled: false
+    autoReplace: true
+    destination:
+      namespace: monitoring
+      server: null
+    source:
+      path: applications/grafana/{{ $.Values.envName }}

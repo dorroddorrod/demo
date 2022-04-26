@@ -6,3 +6,6 @@ applications:
 
   prometheus:
     enabled: true
+
+  grafana:
+    enabled: true

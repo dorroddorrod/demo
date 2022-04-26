@@ -5,6 +5,7 @@ cd applications/argocd/$envName
 helm dep up
 helm upgrade --install argocd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace
 cd ../../../
+sleep 60
 cat <<EOF | kubectl apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
