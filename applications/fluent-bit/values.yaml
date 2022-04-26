@@ -8,12 +8,12 @@ fluent-bit:
           Tag kube.*
           Mem_Buf_Limit 5MB
           Skip_Long_Lines On
-  filters: |
-    [FILTER]
-        Name kubernetes
-        Match kube.*
-        Merge_Log On
-        Keep_Log Off
+    filters: |
+      [FILTER]
+          Name kubernetes
+          Match kube.*
+          Merge_Log On
+          Keep_Log Off
 
     outputs: |
       [OUTPUT]
