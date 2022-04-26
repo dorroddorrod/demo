@@ -15,7 +15,12 @@ fluent-bit:
           Match kube.*
           Merge_Log On
           Keep_Log Off
-
+      [FILTER]
+          Name record_modifier
+          Match kube.*
+          Remove_key _p
+          Remove_key Swap.used
+          Remove_key Swap.free
     outputs: |
       [OUTPUT]
           Name loki
