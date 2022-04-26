@@ -1,6 +1,6 @@
 #!/bin/bash
 export envName=dev-main-01
-export argoNamespace=argo
+export argoNamespace=argo-cd
 cd applications/argocd/$envName
 helm dep up
 helm install argo-cd . -f ../values.yaml -f values.yaml --namespace $argoNamespace --create-namespace

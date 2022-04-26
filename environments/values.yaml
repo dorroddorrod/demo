@@ -21,7 +21,7 @@ default:
   app:
     argo:
       destination:
-        namespace: argo
+        namespace: argo-cd
     enableAutoSync: true
     autoSyncPrune: true
     destination:
@@ -48,15 +48,15 @@ applications:
   argocd:
     enabled: false
     destination:
-      namespace: argo
+      namespace: argo-cd
       server: null
     project: infra
     source:
-      path: applications/argocd
+      path: applications/argo-cd
       repoURL: https://github.com/dorroddorrod/demo.git
       extraSourceFields: |
         helm:
-          releaseName: argocd
+          releaseName: argo-cd
           valueFiles:
           - values.yaml
           - {{ $.Values.envName }}/values.yaml
