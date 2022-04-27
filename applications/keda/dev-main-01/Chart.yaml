@@ -1,0 +1,8 @@
+apiVersion: v2
+name: keda
+description: Event-based autoscaler for workloads on Kubernetes
+version: 2.6.2
+dependencies:
+- name: keda
+  version: 2.6.2
+  repository: https://kedacore.github.io/charts

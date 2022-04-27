@@ -21,3 +21,6 @@ applications:
   
   tempo:
     enabled: true
+
+  keda:
+    enabled: true

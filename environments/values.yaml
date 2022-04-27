@@ -110,3 +110,11 @@ applications:
       server: null
     source:
       path: applications/tempo/{{ $.Values.envName }}
+
+  keda:
+    enabled: false
+    destination:
+      namespace: keda
+      server: null
+    source:
+      path: applications/keda/{{ $.Values.envName }}
