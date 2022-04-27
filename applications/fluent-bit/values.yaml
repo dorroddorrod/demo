@@ -1,4 +1,5 @@
 fluent-bit:
+  kind: Deployment
   config:
     inputs: |
       [INPUT]
