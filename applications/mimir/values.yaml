@@ -1,0 +1,25 @@
+mimir-distributed:
+  alertmanager:
+    enabled: false
+  distributor:
+    replicas: 1
+  ingester:
+    replicas: 2
+  memcached:
+    enabled: false
+  memcached-queries:
+    enabled: false
+  memcached-metadata:
+    enabled: false
+  querier:
+    replicas: 1
+  ruler:
+    replicas: 1
+  gateway:
+    enabled: false
+  admin_api:
+    enabled: true
+  minio:
+    enabled: true
+  nginx:
+    enabled: false
