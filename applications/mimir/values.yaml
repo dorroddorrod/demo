@@ -2,64 +2,53 @@ mimir-distributed:
   mimir:
     config: |
       multitenancy_enabled: true
-
       limits: {}
-
       activity_tracker:
         filepath: /data/metrics-activity.log
-
       alertmanager:
         data_dir: '/data'
         enable_api: true
         external_url: '/alertmanager'
+      {{- if .Values.minio.enabled }}
       alertmanager_storage:
         backend: s3
         s3:
-          endpoint: mimir-minio.monitoring.svc:9000
-          bucket_name: mimir-ruler
-          access_key_id: grafana-mimir
-          secret_access_key: supersecret
+          endpoint: {{ .Release.Name }}-minio.{{ .Release.Namespace }}.svc:9000
+          bucket_name: {{ include "mimir.minioBucketPrefix" . }}-ruler
+          access_key_id: {{ .Values.minio.accessKey }}
+          secret_access_key: {{ .Values.minio.secretKey }}
           insecure: true
-
+      {{- end }}
       frontend_worker:
-        frontend_address: mimir-query-frontend-headless.monitoring.svc:9095
-
+        frontend_address: {{ template "mimir.fullname" . }}-query-frontend-headless.{{ .Release.Namespace }}.svc:{{ include "mimir.serverGrpcListenPort" . }}
       ruler:
         enable_api: true
         rule_path: '/data'
-        alertmanager_url: dnssrvnoa+http://_http-metrics._tcp.mimir-alertmanager-headless.monitoring.svc.cluster.local/alertmanager
-
+        alertmanager_url: dnssrvnoa+http://_http-metrics._tcp.{{ template "mimir.fullname" . }}-alertmanager-headless.{{ .Release.Namespace }}.svc.{{ .Values.global.clusterDomain }}/alertmanager
       server:
         grpc_server_max_recv_msg_size: 104857600
         grpc_server_max_send_msg_size: 104857600
         grpc_server_max_concurrent_streams: 1000
-
       frontend:
         log_queries_longer_than: 10s
         align_queries_with_step: true
-
       compactor:
         data_dir: "/data"
-
       ingester:
         ring:
           final_sleep: 0s
           num_tokens: 512
-
       ingester_client:
         grpc_client_config:
           max_recv_msg_size: 104857600
           max_send_msg_size: 104857600
-
       runtime_config:
-        file: /var/mimir/runtime.yaml
-
+        file: /var/{{ include "mimir.name" . }}/runtime.yaml
       memberlist:
         abort_if_cluster_join_fails: false
         compression_enabled: false
         join_members:
-        - mimir-gossip-ring
-
+        - {{ include "mimir.fullname" . }}-gossip-ring
       # This configures how the store-gateway synchronizes blocks stored in the bucket. It uses Minio by default for getting started (configured via flags) but this should be changed for production deployments.
       blocks_storage:
         backend: s3
@@ -67,20 +56,96 @@ mimir-distributed:
           dir: /data/tsdb
         bucket_store:
           sync_dir: /data/tsdb-sync
+          {{- if .Values.memcached.enabled }}
+          chunks_cache:
+            backend: memcached
+            memcached:
+              addresses: dns+{{ .Release.Name }}-memcached.{{ .Release.Namespace }}.svc:11211
+              max_item_size: {{ .Values.memcached.maxItemMemory }}
+          {{- end }}
+          {{- if index .Values "memcached-metadata" "enabled" }}
+          metadata_cache:
+            backend: memcached
+            memcached:
+              addresses: dns+{{ .Release.Name }}-memcached-metadata.{{ .Release.Namespace }}.svc:11211
+              max_item_size: {{ (index .Values "memcached-metadata").maxItemMemory }}
+          {{- end }}
+          {{- if index .Values "memcached-queries" "enabled" }}
+          index_cache:
+            backend: memcached
+            memcached:
+              addresses: dns+{{ .Release.Name }}-memcached-queries.{{ .Release.Namespace }}.svc:11211
+              max_item_size: {{ (index .Values "memcached-queries").maxItemMemory }}
+          {{- end }}
+        {{- if .Values.minio.enabled }}
         s3:
-          endpoint: mimir-minio.monitoring.svc:9000
-          bucket_name: mimir-tsdb
-          access_key_id: grafana-mimir
-          secret_access_key: supersecret
+          endpoint: {{ .Release.Name }}-minio.{{ .Release.Namespace }}.svc:9000
+          bucket_name: {{ include "mimir.minioBucketPrefix" . }}-tsdb
+          access_key_id: {{ .Values.minio.accessKey }}
+          secret_access_key: {{ .Values.minio.secretKey }}
           insecure: true
+        {{- end }}
+      {{- if .Values.minio.enabled }}
       ruler_storage:
         backend: s3
         s3:
-          endpoint: mimir-minio.monitoring.svc:9000
-          bucket_name: mimir-ruler
-          access_key_id: grafana-mimir
-          secret_access_key: supersecret
+          endpoint: {{ .Release.Name }}-minio.{{ .Release.Namespace }}.svc:9000
+          bucket_name: {{ include "mimir.minioBucketPrefix" . }}-ruler
+          access_key_id: {{ .Values.minio.accessKey }}
+          secret_access_key: {{ .Values.minio.secretKey }}
           insecure: true
+      {{- end }}
+      {{- if .Values.enterprise.enabled }}
+      multitenancy_enabled: true
+      admin_api:
+        leader_election:
+          enabled: true
+          ring:
+            kvstore:
+              store: "memberlist"
+      {{- if .Values.minio.enabled }}
+      admin_client:
+        storage:
+          type: s3
+          s3:
+            endpoint: {{ .Release.Name }}-minio.{{ .Release.Namespace }}.svc:9000
+            bucket_name: enterprise-metrics-admin
+            access_key_id: {{ .Values.minio.accessKey }}
+            secret_access_key: {{ .Values.minio.secretKey }}
+            insecure: true
+      {{- end }}
+      auth:
+        type: enterprise
+      cluster_name: "{{ .Release.Name }}"
+      license:
+        path: "/license/license.jwt"
+      {{- if .Values.gateway.useDefaultProxyURLs }}
+      gateway:
+        proxy:
+          default:
+            url: http://{{ template "mimir.fullname" . }}-admin-api.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          admin_api:
+            url: http://{{ template "mimir.fullname" . }}-admin-api.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          alertmanager:
+            url: http://{{ template "mimir.fullname" . }}-alertmanager.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          compactor:
+            url: http://{{ template "mimir.fullname" . }}-compactor.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          distributor:
+            url: http://{{ template "mimir.fullname" . }}-distributor.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          ingester:
+            url: http://{{ template "mimir.fullname" . }}-ingester.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          query_frontend:
+            url: http://{{ template "mimir.fullname" . }}-query-frontend.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          ruler:
+            url: http://{{ template "mimir.fullname" . }}-ruler.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+          store_gateway:
+            url: http://{{ template "mimir.fullname" . }}-store-gateway.{{ .Release.Namespace }}.svc:{{ include "mimir.serverHttpListenPort" . }}
+      {{- end }}
+      instrumentation:
+        enabled: true
+        distributor_client:
+          address: 'dns:///{{ template "mimir.fullname" . }}-distributor.{{ .Release.Namespace }}.svc:{{ include "mimir.serverGrpcListenPort" . }}'
+      {{- end }}
   alertmanager:
     enabled: false
   distributor:
