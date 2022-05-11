@@ -170,3 +170,5 @@ mimir-distributed:
     enabled: true
   nginx:
     enabled: false
+  serviceMonitor:
+    enabled: true
