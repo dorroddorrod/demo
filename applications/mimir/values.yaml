@@ -149,6 +149,8 @@ mimir-distributed:
   alertmanager:
     enabled: false
   distributor:
+    extraArgs:
+      distributor.ingestion-rate-limit: 50000
     replicas: 1
   ingester:
     replicas: 2
