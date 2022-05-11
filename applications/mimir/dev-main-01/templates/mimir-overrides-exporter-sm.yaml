@@ -1,0 +1,32 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/component: overrides-exporter
+    app.kubernetes.io/instance: mimir
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mimir
+    app.kubernetes.io/part-of: memberlist
+    app.kubernetes.io/version: 2.0.0
+    argocd.argoproj.io/instance: mimir
+    helm.sh/chart: mimir-distributed-2.0.8
+  name: mimir-overrides-exporter
+  namespace: monitoring
+spec:
+  endpoints:
+  - port: http-metrics
+    relabelings:
+    - action: replace
+      replacement: monitoring/overrides-exporter
+      sourceLabels:
+      - job
+      targetLabel: job
+    - action: replace
+      replacement: mimir
+      targetLabel: cluster
+    scheme: http
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: overrides-exporter
+      app.kubernetes.io/instance: mimir
+      app.kubernetes.io/name: mimir
