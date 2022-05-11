@@ -149,6 +149,11 @@ mimir-distributed:
   alertmanager:
     enabled: false
   runtimeConfig: 
+    ingester_limits:
+      max_ingestion_rate: 20000
+      max_series: 1500000
+      max_tenants: 1000
+      max_inflight_push_requests: 30000
     team1:
       ingestion_rate: 50000
   distributor:
