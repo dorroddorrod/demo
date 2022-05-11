@@ -158,7 +158,7 @@ mimir-distributed:
       team1:
         ingestion_rate: 50000
   distributor:
-    replicas: 2
+    replicas: 1
   ingester:
     replicas: 2
   memcached:
