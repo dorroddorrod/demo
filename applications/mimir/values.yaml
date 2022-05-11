@@ -154,8 +154,9 @@ mimir-distributed:
       max_series: 1500000
       max_tenants: 1000
       max_inflight_push_requests: 30000
-    team1:
-      ingestion_rate: 50000
+    overrides:
+      team1:
+        ingestion_rate: 50000
   distributor:
     replicas: 2
   ingester:
