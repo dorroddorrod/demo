@@ -149,8 +149,6 @@ mimir-distributed:
   alertmanager:
     enabled: false
   runtimeConfig:
-    limits:
-      ingestion_rate: 1234567
     ingester_limits:
       max_ingestion_rate: 1234567
       max_series: 1500000
