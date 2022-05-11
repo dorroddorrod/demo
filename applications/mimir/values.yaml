@@ -2,7 +2,8 @@ mimir-distributed:
   mimir:
     config: |
       multitenancy_enabled: true
-      limits: {}
+      limits:
+        ingestion_rate: 1234567
       activity_tracker:
         filepath: /data/metrics-activity.log
       alertmanager:
