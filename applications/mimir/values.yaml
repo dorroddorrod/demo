@@ -151,7 +151,7 @@ mimir-distributed:
   distributor:
     extraArgs:
       distributor.ingestion-rate-limit: 50000
-    replicas: 1
+    replicas: 2
   ingester:
     replicas: 2
   memcached:
