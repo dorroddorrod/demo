@@ -27,3 +27,6 @@ applications:
 
   nginx-ingress:
     enabled: true
+  
+  keycloak:
+    enabled: true

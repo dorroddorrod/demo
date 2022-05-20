@@ -125,3 +125,11 @@ applications:
       server: null
     source:
       path: applications/nginx-ingress-controller/{{ $.Values.envName }}
+
+  keycloak:
+    enabled: false
+    destination:
+      namespace: keycloak
+      server: null
+    source:
+      path: applications/keycloak/{{ $.Values.envName }}

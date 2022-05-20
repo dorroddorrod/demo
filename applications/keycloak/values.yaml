@@ -1,0 +1,10 @@
+keycloak:
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    servicePort: http
+    rules:
+      - host: 'keycloak.k8s.local'
+        paths:
+          - path: /
+            pathType: Prefix

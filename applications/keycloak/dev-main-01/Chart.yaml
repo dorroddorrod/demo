@@ -1,0 +1,8 @@
+apiVersion: v2
+description: Open Source Identity and Access Management For Modern Applications and Services
+name: keycloak
+version: 18.1.1
+dependencies:
+- name: keycloak
+  version: 18.1.1
+  repository: codecentric/keycloak

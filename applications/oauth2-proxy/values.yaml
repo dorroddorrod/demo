@@ -1,0 +1,8 @@
+oauth2-proxy:
+  config:
+    clientID: "XXXXXXX"
+    clientSecret: "XXXXXXXX"
+    cookieSecret: "XXXXXXXXXXXXXXXX"
+  metrics:
+    servicemonitor:
+      enabled: true
