@@ -1,6 +1,7 @@
 grafana:
   adminPassword: strongpassword
   ingress:
+    ingressClassName: nginx
     enabled: true
     path: /
     pathType: Prefix
