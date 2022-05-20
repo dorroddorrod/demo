@@ -117,3 +117,11 @@ applications:
       server: null
     source:
       path: applications/keda/{{ $.Values.envName }}
+
+  nginx-ingress:
+    enabled: false
+    destination:
+      namespace: nginx-ingress
+      server: null
+    source:
+      path: applications/nginx-ingress/{{ $.Values.envName }}

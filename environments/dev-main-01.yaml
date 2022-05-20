@@ -24,3 +24,6 @@ applications:
 
   keda:
     enabled: false
+
+  nginx-ingress:
+    enabled: true
