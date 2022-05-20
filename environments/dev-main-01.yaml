@@ -11,16 +11,16 @@ applications:
     enabled: true
 
   fluent-bit:
-    enabled: true
+    enabled: false
 
   loki:
-    enabled: true
+    enabled: false
 
   mimir:
-    enabled: true
+    enabled: false
   
   tempo:
-    enabled: true
+    enabled: false
 
   keda:
-    enabled: true
+    enabled: false
