@@ -1,4 +1,5 @@
-controller:
-  metrics:
-    serviceMonitor:
-      enabled: true
+nginx-ingress:
+  controller:
+    metrics:
+      serviceMonitor:
+        enabled: true

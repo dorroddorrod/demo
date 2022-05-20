@@ -1,2 +1,16 @@
 grafana:
   adminPassword: strongpassword
+  ingress:
+    enabled: true
+    path: /
+    pathType: Prefix
+    hosts:
+      - grafana.k8s.local
+    extraPaths:
+    - path: /*
+      pathType: Prefix
+      backend:
+        service:
+          name: grafana
+          port:
+            name: service
