@@ -18,6 +18,7 @@ oauth2-proxy:
       oidc_issuer_url = "keycloak.k8s.local"
       email_domains = [ "*" ]
       scope = "openid profile email"
+      cookie_domain = "grafana.k8s.local"
       whitelist_domains = "grafana.k8s.local"
       pass_authorization_header = true
       pass_access_token = true
