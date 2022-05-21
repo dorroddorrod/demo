@@ -5,7 +5,7 @@ oauth2-proxy:
     path: /oauth2
     pathType: ImplementationSpecific
     hosts:
-      - auth.k8s.local
+      - grafana.k8s.local
   extraArgs:
     provider: keycloak
     login-url: "http://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
