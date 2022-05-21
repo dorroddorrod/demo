@@ -1,8 +1,10 @@
 oauth2-proxy:
   ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
     enabled: true
     className: nginx
-    path: /oauth2
+    path: /oauth2/*
     pathType: Prefix
     hosts:
       - grafana.k8s.local
