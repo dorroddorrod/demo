@@ -5,7 +5,7 @@ oauth2-proxy:
     enabled: true
     className: nginx
     path: /oauth2/(.+)
-    pathType: ImplementationSpecific
+    pathType: Prefix
     hosts:
       - grafana.k8s.local
   extraArgs:
