@@ -13,9 +13,9 @@ oauth2-proxy:
     provider: keycloak
     set-xauthrequest: true
     provider-display-name: Dors auth
-    login-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
-    redeem-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/token"
-    validate-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/userinfo"
+    login-url: "https://keycloak-http/auth/realms/grafana/protocol/openid-connect/auth"
+    redeem-url: "https://keycloak-http/auth/realms/grafana/protocol/openid-connect/token"
+    validate-url: "https://keycloak-http/auth/realms/grafana/protocol/openid-connect/userinfo"
     keycloak-group: "/grafana"
   config:
     clientID: "grafana"
