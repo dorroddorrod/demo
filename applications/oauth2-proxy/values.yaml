@@ -8,9 +8,9 @@ oauth2-proxy:
       - grafana.k8s.local
   extraArgs:
     provider: keycloak
-    login-url: "http://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
-    redeem-url: "http://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/token"
-    validate-url: "http://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/userinfo"
+    login-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
+    redeem-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/token"
+    validate-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/userinfo"
     keycloak-group: "/grafana"
   config:
     clientID: "grafana"
