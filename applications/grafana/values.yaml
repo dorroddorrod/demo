@@ -2,8 +2,8 @@ grafana:
   adminPassword: strongpassword
   ingress:
     annotations:
-      nginx.ingress.kubernetes.io/auth-url: "http://auth.k8s.local/oauth2/auth"
-      nginx.ingress.kubernetes.io/auth-signin: "http://auth.k8s.local/oauth2/start?rd=$escaped_request_uri"
+      nginx.ingress.kubernetes.io/auth-url: "http://$host/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "http://$host/oauth2/start?rd=$escaped_request_uri"
       nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
     ingressClassName: nginx
     enabled: true
