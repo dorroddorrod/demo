@@ -8,6 +8,6 @@ grafana:
     ingressClassName: nginx
     enabled: true
     path: /
-    pathType: Prefix
+    pathType: ImplementationSpecific
     hosts:
       - grafana.k8s.local
