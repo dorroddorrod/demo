@@ -6,6 +6,7 @@ grafana:
       nginx.ingress.kubernetes.io/auth-signin: "http://$host/oauth2/start?rd=$escaped_request_uri"
       nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
       nginx.ingress.kubernetes.io/rewrite-target: /$1
+      acme.cert-manager.io/http01-edit-in-place: "true"
     ingressClassName: nginx
     enabled: true
     path: /grafana/(.+)
