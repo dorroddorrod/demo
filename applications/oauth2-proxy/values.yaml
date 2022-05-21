@@ -14,7 +14,7 @@ oauth2-proxy:
     keycloak-group: "/grafana"
   config:
     clientID: "grafana"
-    clientSecret: "NTTOEiDdLbEiGN5JpdvpQzQadwlZn1eX"
+    clientSecret: "Mclfc76LlglQCtiZJJO1XBhp0Njp47G7"
   metrics:
     servicemonitor:
       enabled: true
