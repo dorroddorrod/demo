@@ -22,6 +22,7 @@ oauth2-proxy:
     clientSecret: "etYE19topdAOJUedOgUAIGCTbnPMNbiS"
     cookieSecret: "elo0WHlFY0VpZDE0OW5jR3d5djB6a2N1Q3g3T0pIN04="
     configFile: |-
+      email_domains = [ "*" ]
       scope = "openid profile email"
   metrics:
     servicemonitor:
