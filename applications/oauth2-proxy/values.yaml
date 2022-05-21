@@ -8,25 +8,18 @@ oauth2-proxy:
     pathType: Prefix
     hosts:
       - grafana.k8s.local
+  extraArgs:
+    provider: keycloak
+    set-xauthrequest: true
+    provider-display-name: SysEleven Login
+    login-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
+    redeem-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/token"
+    validate-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/userinfo"
+    keycloak-group: "/grafana"
   config:
     clientID: "grafana"
     clientSecret: "Mclfc76LlglQCtiZJJO1XBhp0Njp47G7"
     cookieSecret: "elo0WHlFY0VpZDE0OW5jR3d5djB6a2N1Q3g3T0pIN04="
-    configFile: |-
-      provider = "oidc"
-      provider_display_name = "Keycloak"
-      oidc_issuer_url = "keycloak.k8s.local"
-      email_domains = [ "*" ]
-      scope = "openid profile email"
-      cookie_domain = "grafana.k8s.local"
-      whitelist_domains = "grafana.k8s.local"
-      pass_authorization_header = true
-      pass_access_token = true
-      pass_user_headers = true
-      set_authorization_header = true
-      set_xauthrequest = true
-      cookie_refresh = "1m"
-      cookie_expire = "30m"
   metrics:
     servicemonitor:
       enabled: true
