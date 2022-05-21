@@ -1,13 +1,11 @@
 oauth2-proxy:
   ingress:
     enabled: true
-    annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /
     className: nginx
     path: /oauth2
     pathType: ImplementationSpecific
     hosts:
-      - grafana.k8s.local
+      - auth.k8s.local
   extraArgs:
     provider: keycloak
     login-url: "http://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
