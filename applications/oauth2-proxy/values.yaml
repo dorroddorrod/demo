@@ -4,11 +4,10 @@ oauth2-proxy:
     login-url: "http://keycloak.k8s.local/realms/grafana/protocol/openid-connect/auth"
     redeem-url: "http://keycloak.k8s.local/realms/grafana/protocol/openid-connect/token"
     validate-url: "http://keycloak.k8s.local/realms/grafana/protocol/openid-connect/userinfo"
-    keycloak-group: grafana
+    keycloak-group: "/grafana"
   config:
-    clientID: "XXXXXXX"
-    clientSecret: "XXXXXXXX"
-    cookieSecret: "XXXXXXXXXXXXXXXX"
+    clientID: "grafana"
+    clientSecret: "NTTOEiDdLbEiGN5JpdvpQzQadwlZn1eX"
   metrics:
     servicemonitor:
       enabled: true
