@@ -2,7 +2,7 @@ keycloak:
   serviceMonitor:
     enabled: true
   ingress:
-    enabled: true
+    enabled: false
     ingressClassName: "nginx"
     servicePort: http
     rules:
