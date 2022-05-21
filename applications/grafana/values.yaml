@@ -11,3 +11,11 @@ grafana:
     pathType: Prefix
     hosts:
       - grafana.k8s.local
+    extraPaths:
+    - path: /oauth2
+      pathType: Prefix
+      backend:
+        service:
+          name: oauth2-proxy.keycloak.svc
+          port:
+            number: 80
