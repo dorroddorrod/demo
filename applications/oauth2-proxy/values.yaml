@@ -12,7 +12,7 @@ oauth2-proxy:
   extraArgs:
     provider: keycloak
     set-xauthrequest: true
-    provider-display-name: SysEleven Login
+    provider-display-name: Dors auth
     login-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/auth"
     redeem-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/token"
     validate-url: "https://keycloak.k8s.local/auth/realms/grafana/protocol/openid-connect/userinfo"
