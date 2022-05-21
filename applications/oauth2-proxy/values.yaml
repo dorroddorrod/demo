@@ -1,4 +1,10 @@
 oauth2-proxy:
+  extraArgs:
+    provider: keycloak
+    login-url: "http://keycloak.k8s.local/realms/grafana/protocol/openid-connect/auth"
+    redeem-url: "http://keycloak.k8s.local/realms/grafana/protocol/openid-connect/token"
+    validate-url: "http://keycloak.k8s.local/realms/grafana/protocol/openid-connect/userinfo"
+    keycloak-group: grafana
   config:
     clientID: "XXXXXXX"
     clientSecret: "XXXXXXXX"
