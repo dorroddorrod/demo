@@ -3,6 +3,8 @@ keycloak:
     enabled: true
   ingress:
     enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
     ingressClassName: "nginx"
     servicePort: http
     rules:

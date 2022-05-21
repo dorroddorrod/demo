@@ -6,9 +6,10 @@ grafana:
       nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
       nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
       nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+      nginx.ingress.kubernetes.io/use-regex: "true"
     ingressClassName: nginx
     enabled: true
-    path: /
+    path: /*
     pathType: Prefix
     hosts:
       - grafana.k8s.local
