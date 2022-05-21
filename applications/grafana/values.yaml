@@ -7,7 +7,7 @@ grafana:
       nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
     ingressClassName: nginx
     enabled: true
-    path: /
+    path: /grafana
     pathType: ImplementationSpecific
     hosts:
       - grafana.k8s.local
