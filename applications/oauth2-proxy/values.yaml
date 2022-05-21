@@ -1,6 +1,6 @@
 oauth2-proxy:
   ingress:
-    enabled: true
+    enabled: false
     className: nginx
     path: /oauth2
     pathType: Prefix
