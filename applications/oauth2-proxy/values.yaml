@@ -8,7 +8,7 @@ oauth2-proxy:
     path: /oauth2/*
     pathType: Prefix
     hosts:
-      - grafana.k8s.local
+      - grafana
   extraArgs:
     provider: keycloak
     set-xauthrequest: true

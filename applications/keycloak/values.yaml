@@ -8,7 +8,7 @@ keycloak:
     ingressClassName: "nginx"
     servicePort: http
     rules:
-      - host: 'keycloak.k8s.local'
+      - host: keycloak-http
         paths:
           - path: /*
             pathType: Prefix

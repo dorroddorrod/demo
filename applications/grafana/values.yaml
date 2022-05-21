@@ -12,4 +12,4 @@ grafana:
     path: /*
     pathType: Prefix
     hosts:
-      - grafana.k8s.local
+      - grafana
