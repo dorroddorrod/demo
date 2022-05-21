@@ -1,4 +1,6 @@
 keycloak:
+  serviceMonitor:
+    enabled: true
   ingress:
     enabled: true
     ingressClassName: "nginx"
