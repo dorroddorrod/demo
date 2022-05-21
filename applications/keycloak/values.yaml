@@ -8,5 +8,5 @@ keycloak:
     rules:
       - host: 'keycloak.k8s.local'
         paths:
-          - path: /
+          - path: /*
             pathType: Prefix
