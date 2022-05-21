@@ -17,6 +17,12 @@ oauth2-proxy:
     redeem-url: "http://keycloak-http/auth/realms/grafana/protocol/openid-connect/token"
     validate-url: "http://keycloak-http/auth/realms/grafana/protocol/openid-connect/userinfo"
     oidc-issuer-url: "http://keycloak-http/auth/realms/grafana"
+    pass-authorization-header: true
+    pass-access_token: true
+    pass-user-headers: true
+    set-authorization_header: true
+    cookie-refresh: "1m"
+    cookie-expire: "30m"
   config:
     clientID: "grafana"
     clientSecret: "etYE19topdAOJUedOgUAIGCTbnPMNbiS"
