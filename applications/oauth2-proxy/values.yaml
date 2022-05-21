@@ -10,7 +10,7 @@ oauth2-proxy:
     hosts:
       - grafana
   extraArgs:
-    provider: keycloak
+    provider: oidc
     set-xauthrequest: true
     provider-display-name: Dors auth
     login-url: "http://keycloak-http/auth/realms/grafana/protocol/openid-connect/auth"
