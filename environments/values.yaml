@@ -133,3 +133,11 @@ applications:
       server: null
     source:
       path: applications/keycloak/{{ $.Values.envName }}
+
+  oauth2-proxy:
+    enabled: false
+    destination:
+      namespace: keycloak
+      server: null
+    source:
+      path: applications/oauth2-proxy/{{ $.Values.envName }}

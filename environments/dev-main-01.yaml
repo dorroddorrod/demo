@@ -30,3 +30,6 @@ applications:
   
   keycloak:
     enabled: true
+
+  oauth2-proxy:
+    enabled: true
